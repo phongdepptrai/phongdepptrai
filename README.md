@@ -39,7 +39,6 @@
 | Project | Description | Tech |
 |---------|-------------|------|
 | [📅 Xep-TKB-UET](https://github.com/phongdepptrai/Xep-TKB-UET) | Schedule planner tool for UET students | HTML |
-| [🏠 KTXMeTri](https://github.com/phongdepptrai/KTXMeTri) | Dormitory geometry/metric tool | HTML |
 | [🏠 KTXMeTri2](https://github.com/phongdepptrai/KTXMeTri2) | Dormitory metric tool v2 | HTML |
 | [❤️ Heart Animation](https://github.com/phongdepptrai/phongdepptrai/blob/main/first.html) | Interactive canvas heart animation | HTML / JS |
 
@@ -48,20 +47,12 @@
 > **Problem domain: SALB-3PM** — *Simple Assembly Line Balancing with Power Peak Minimization*
 >
 > Given *n* tasks (each with execution time *t_i* and power draw *w_i*), *m* workstations, cycle time *c*, and a precedence DAG, assign every task to exactly one workstation so that (i) the total execution time per workstation does not exceed *c*, (ii) all precedence constraints are respected, and (iii) the **peak simultaneous power draw** across all workstations and all time slots is minimized.
->
-> This is an NP-hard combinatorial optimization problem. All three repositories encode it as SAT / MaxSAT and solve it with state-of-the-art solvers (**CaDiCaL 1.9.5**, **Glucose 4**, **open-WBO-inc**). Benchmark instances are drawn from the classic ALB literature: *MERTENS, BOWMAN, JAESCHKE, JACKSON, MANSOOR, MITCHELL, ROSZIEG, BUXEY, SAWYER, GUNTHER, WARNECKE, HESKIA*.
 
 <br>
 
 #### [🏭 SAML3P](https://github.com/phongdepptrai/SAML3P) — Foundational SAT solver suite
 
 **Core idea:** *staircase CNF encoding* — boolean activity variables A[task][time] are encoded as a run of 1s followed by 0s (a staircase shape), with clauses enforcing each transition.
-
-- **Feasibility:** task-assignment (X), start-time (S), and activity (A) variables encoded in CNF; solved by **CaDiCaL 1.9.5** or **Glucose 4**
-- **Optimization:** ladder-variable technique — auxiliary chain U[LB+1..UB−1] where asserting ¬U[v] forces peak < v, guiding the solver from the first feasible peak down to the optimum
-- **Variants:** 15+ solver configurations — pure staircase, **PBEnc/binmerge** pseudo-boolean encoding, incremental SAT with progressive peak cuts, CaDiCaL-incremental, combined PB-staircase
-- **Output:** interactive HTML Gantt-style schedule visualizations per instance
-
 ---
 
 #### [🔧 P3SAML3P](https://github.com/phongdepptrai/P3SAML3P) — Modular multi-solver comparison platform
@@ -79,18 +70,6 @@ Six solver strategies behind a unified `run_launcher.py`:
 | *Inheritant* | Warm-starts UB from a prior run at r_max−1 or R_max−1 (reads `summary.csv`) |
 | *MaxSAT* | RC2/WCNF via PySAT |
 
-`generate_table.py` renders HTML result tables (CPU time, %LB gap, feasibility %, optimality % per (r_max, R_max) pair). `validate_schedule.py` verifies every output solution.
-
----
-
-#### [📐 MaxSatSALB3PM](https://github.com/phongdepptrai/MaxSatSALB3PM) — Standalone MaxSAT formulation
-
-**Based on the paper:** *"Optimizing Power Peaks in Simple Assembly Line Balancing through Maximum Satisfiability"*
-
-- **Hard clauses:** task assignment uniqueness, staircase activity, precedence ordering, cycle-time feasibility
-- **Soft clauses:** one unit of peak power per clause (cost = 1 per violated bound)
-- **Solver:** incremental *open-WBO-inc* (Glucose 4.1 static binary)
-- **Results:** BUXEY → peak 315 in 472 s; HESKIA → peak 229 in 2,204 s
 
 ### 🤖 AI & Computer Vision
 
