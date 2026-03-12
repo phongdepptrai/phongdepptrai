@@ -11,9 +11,10 @@
 ## 🧑‍💻 About Me
 
 - 🎓 Student at **University of Engineering and Technology (UET)**
+- 🔬 Researching **SAT/MaxSAT-based approaches to Combinatorial Optimization** — specifically the *Simple Assembly Line Balancing Problem with Power Peak Minimization* (SALB-3PM)
 - 💡 Passionate about **Algorithms, AI, Computer Vision, and Systems Programming**
 - 🌱 Currently exploring **Operating Systems & Security**
-- ⚡ I build things ranging from web tools to kernels!
+- ⚡ I build things ranging from SAT solvers to web tools to kernels!
 
 ---
 
@@ -42,15 +43,24 @@
 | [🏠 KTXMeTri2](https://github.com/phongdepptrai/KTXMeTri2) | Dormitory metric tool v2 | HTML |
 | [❤️ Heart Animation](https://github.com/phongdepptrai/phongdepptrai/blob/main/first.html) | Interactive canvas heart animation | HTML / JS |
 
-### 🤖 AI & Algorithms
+### 🔬 Research — SAT-based Assembly Line Balancing
+
+> **Problem:** *Simple Assembly Line Balancing with Power Peak Minimization* (SALB-3PM)
+> Given *n* tasks (each with an execution time *t_i* and power draw *w_i*), *m* workstations, a cycle time *c*, and a precedence graph, assign every task to a workstation so that cycle-time and precedence constraints are satisfied while **minimising the peak simultaneous power consumption** across all workstations.
+> All three repos encode this NP-hard problem as SAT / MaxSAT and solve it with state-of-the-art solvers (CaDiCaL, Glucose4, open-WBO). Benchmarks come from the classic ALB literature: MERTENS, BOWMAN, JAESCHKE, JACKSON, MANSOOR, MITCHELL, ROSZIEG, BUXEY, SAWYER, GUNTHER, WARNECKE, HESKIA.
+
+| Project | What it does |
+|---------|--------------|
+| [🏭 SAML3P](https://github.com/phongdepptrai/SAML3P) | **Foundational SAT solver suite.** Introduces a novel *staircase CNF encoding* for the task-assignment (X) and start-time (S) variables, ensuring "exactly one workstation" and "consecutive activity" constraints with minimal clause overhead. Contains multiple iterative solver variants: pure staircase, pseudo-boolean (PBEnc/binmerge), incremental SAT with progressive bound tightening, and CaDiCaL-based versions. Outputs HTML Gantt-style schedule visualizations. |
+| [🔧 P3SAML3P](https://github.com/phongdepptrai/P3SAML3P) | **Modular multi-solver comparison platform.** Packages six independent solver strategies — *Base*, *Staircase-1-3* (CardNet cardinality encoding), *AtmostK* (at-most-k constraint encoding), *Incremental* (progressive peak-bound tightening), *Inheritant* (warm-starting from a looser bound), and *MaxSAT* (RC2/WCNF) — behind a unified runner (`run_launcher.py`). Parametrised by `r_max` (cycle repetitions) and `R_max` (resource cap). Includes `validate_schedule.py` for correctness checking and `generate_table.py` which renders interactive HTML result tables with gap-to-lower-bound (%LB), CPU time, feasibility rate, and optimality rate. |
+| [📐 MaxSatSALB3PM](https://github.com/phongdepptrai/MaxSatSALB3PM) | **Standalone MaxSAT formulation.** Encodes the peak-minimisation objective directly as a *Weighted CNF* (WCNF) formula: hard clauses enforce task assignment, precedence, and cycle-time feasibility; soft clauses penalise each unit of peak power. Solved via the *open-WBO-inc* (Glucose 4.1) incremental MaxSAT solver. Based on the paper *"Optimizing Power Peaks in Simple Assembly Line Balancing through Maximum Satisfiability"*. |
+
+### 🤖 AI & Computer Vision
 
 | Project | Description | Tech |
 |---------|-------------|------|
 | [👁️ Eyes Closed Detector](https://github.com/phongdepptrai/eyes_closed_detecter) | Drowsiness detection via eye closure | Python |
 | [🧩 Block Blast Solver](https://github.com/phongdepptrai/Block_Blast_solver) | AI solver for Block Blast puzzle | Python |
-| [🔢 P3SAML3P](https://github.com/phongdepptrai/P3SAML3P) | SAM-based algorithmic project | Python |
-| [📐 MaxSatSALB3PM](https://github.com/phongdepptrai/MaxSatSALB3PM) | MaxSAT algorithm implementation | Python |
-| [🌐 SAML3P](https://github.com/phongdepptrai/SAML3P) | SAM project (HTML front-end) | HTML |
 
 ### 🎮 Games
 
