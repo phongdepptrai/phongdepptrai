@@ -2,7 +2,7 @@
 
 # 💫 Hi, I'm Phong!
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=F75C7E&center=true&vCenter=true&width=500&lines=Full-Stack+Developer;AI+%26+Computer+Vision+Enthusiast;Game+Developer;OS+%26+Systems+Programmer)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=F75C7E&center=true&vCenter=true&width=540&lines=SAT+%26+Optimization+Researcher;Full-Stack+Developer;AI+%26+Computer+Vision+Enthusiast;Game+Developer;OS+%26+Systems+Programmer)](https://github.com/DenverCoder1/readme-typing-svg)
 
 </div>
 
@@ -45,15 +45,52 @@
 
 ### 🔬 Research — SAT-based Assembly Line Balancing
 
-> **Problem:** *Simple Assembly Line Balancing with Power Peak Minimization* (SALB-3PM)
-> Given *n* tasks (each with an execution time *t_i* and power draw *w_i*), *m* workstations, a cycle time *c*, and a precedence graph, assign every task to a workstation so that cycle-time and precedence constraints are satisfied while **minimising the peak simultaneous power consumption** across all workstations.
-> All three repos encode this NP-hard problem as SAT / MaxSAT and solve it with state-of-the-art solvers (CaDiCaL, Glucose4, open-WBO). Benchmarks come from the classic ALB literature: MERTENS, BOWMAN, JAESCHKE, JACKSON, MANSOOR, MITCHELL, ROSZIEG, BUXEY, SAWYER, GUNTHER, WARNECKE, HESKIA.
+> **Problem domain: SALB-3PM** — *Simple Assembly Line Balancing with Power Peak Minimization*
+>
+> Given *n* tasks (each with execution time *t_i* and power draw *w_i*), *m* workstations, cycle time *c*, and a precedence DAG, assign every task to exactly one workstation so that (i) the total execution time per workstation does not exceed *c*, (ii) all precedence constraints are respected, and (iii) the **peak simultaneous power draw** across all workstations and all time slots is minimized.
+>
+> This is an NP-hard combinatorial optimization problem. All three repositories encode it as SAT / MaxSAT and solve it with state-of-the-art solvers (**CaDiCaL 1.9.5**, **Glucose 4**, **open-WBO-inc**). Benchmark instances are drawn from the classic ALB literature: *MERTENS, BOWMAN, JAESCHKE, JACKSON, MANSOOR, MITCHELL, ROSZIEG, BUXEY, SAWYER, GUNTHER, WARNECKE, HESKIA*.
 
-| Project | What it does |
-|---------|--------------|
-| [🏭 SAML3P](https://github.com/phongdepptrai/SAML3P) | **Foundational SAT solver suite.** Introduces a novel *staircase CNF encoding* for the task-assignment (X) and start-time (S) variables, ensuring "exactly one workstation" and "consecutive activity" constraints with minimal clause overhead. Contains multiple iterative solver variants: pure staircase, pseudo-boolean (PBEnc/binmerge), incremental SAT with progressive bound tightening, and CaDiCaL-based versions. Outputs HTML Gantt-style schedule visualizations. |
-| [🔧 P3SAML3P](https://github.com/phongdepptrai/P3SAML3P) | **Modular multi-solver comparison platform.** Packages six independent solver strategies — *Base*, *Staircase-1-3* (CardNet cardinality encoding), *AtmostK* (at-most-k constraint encoding), *Incremental* (progressive peak-bound tightening), *Inheritant* (warm-starting from a looser bound), and *MaxSAT* (RC2/WCNF) — behind a unified runner (`run_launcher.py`). Parametrised by `r_max` (cycle repetitions) and `R_max` (resource cap). Includes `validate_schedule.py` for correctness checking and `generate_table.py` which renders interactive HTML result tables with gap-to-lower-bound (%LB), CPU time, feasibility rate, and optimality rate. |
-| [📐 MaxSatSALB3PM](https://github.com/phongdepptrai/MaxSatSALB3PM) | **Standalone MaxSAT formulation.** Encodes the peak-minimisation objective directly as a *Weighted CNF* (WCNF) formula: hard clauses enforce task assignment, precedence, and cycle-time feasibility; soft clauses penalise each unit of peak power. Solved via the *open-WBO-inc* (Glucose 4.1) incremental MaxSAT solver. Based on the paper *"Optimizing Power Peaks in Simple Assembly Line Balancing through Maximum Satisfiability"*. |
+<br>
+
+#### [🏭 SAML3P](https://github.com/phongdepptrai/SAML3P) — Foundational SAT solver suite
+
+**Core idea:** *staircase CNF encoding* — boolean activity variables A[task][time] are encoded as a run of 1s followed by 0s (a staircase shape), with clauses enforcing each transition.
+
+- **Feasibility:** task-assignment (X), start-time (S), and activity (A) variables encoded in CNF; solved by **CaDiCaL 1.9.5** or **Glucose 4**
+- **Optimization:** ladder-variable technique — auxiliary chain U[LB+1..UB−1] where asserting ¬U[v] forces peak < v, guiding the solver from the first feasible peak down to the optimum
+- **Variants:** 15+ solver configurations — pure staircase, **PBEnc/binmerge** pseudo-boolean encoding, incremental SAT with progressive peak cuts, CaDiCaL-incremental, combined PB-staircase
+- **Output:** interactive HTML Gantt-style schedule visualizations per instance
+
+---
+
+#### [🔧 P3SAML3P](https://github.com/phongdepptrai/P3SAML3P) — Modular multi-solver comparison platform
+
+**Extends SAML3P with two extra parameters:** `r_max` (cycle replications — horizon = `c × r_max`) and `R_max` (per-slot resource cap enforced via PBEnc cardinality).
+
+Six solver strategies behind a unified `run_launcher.py`:
+
+| Strategy | Description |
+|----------|-------------|
+| *Base* | Plain staircase feasibility |
+| *Staircase-1-3* | CardNet cardinality encoding |
+| *AtmostK* | At-most-k PB constraint |
+| *Incremental* | Ladder-variable peak tightening (PBEnc/binmerge) |
+| *Inheritant* | Warm-starts UB from a prior run at r_max−1 or R_max−1 (reads `summary.csv`) |
+| *MaxSAT* | RC2/WCNF via PySAT |
+
+`generate_table.py` renders HTML result tables (CPU time, %LB gap, feasibility %, optimality % per (r_max, R_max) pair). `validate_schedule.py` verifies every output solution.
+
+---
+
+#### [📐 MaxSatSALB3PM](https://github.com/phongdepptrai/MaxSatSALB3PM) — Standalone MaxSAT formulation
+
+**Based on the paper:** *"Optimizing Power Peaks in Simple Assembly Line Balancing through Maximum Satisfiability"*
+
+- **Hard clauses:** task assignment uniqueness, staircase activity, precedence ordering, cycle-time feasibility
+- **Soft clauses:** one unit of peak power per clause (cost = 1 per violated bound)
+- **Solver:** incremental *open-WBO-inc* (Glucose 4.1 static binary)
+- **Results:** BUXEY → peak 315 in 472 s; HESKIA → peak 229 in 2,204 s
 
 ### 🤖 AI & Computer Vision
 
