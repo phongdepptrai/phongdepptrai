@@ -1,14 +1,8 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:0f172a,50:1d4ed8,100:06b6d4&text=Phong%20Nguyen&fontAlign=50&fontAlignY=40&fontColor=ffffff&fontSize=52&desc=SAT%20Optimization%20%7C%20AI%20%7C%20Systems%20Programming&descAlign=50&descAlignY=62" alt="header" />
+# Phong Nguyen
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=22&pause=1200&color=22D3EE&center=true&vCenter=true&width=720&lines=Researcher+in+SAT%2FMaxSAT+Optimization;Full-Stack+Developer+%26+Builder;AI+%26+Computer+Vision+Enthusiast;OS+%26+Security+Explorer)](https://github.com/DenverCoder1/readme-typing-svg)
-
-<p>
-	<img src="https://komarev.com/ghpvc/?username=phongdepptrai&style=for-the-badge&color=0ea5e9" alt="profile views" />
-	<img src="https://img.shields.io/github/followers/phongdepptrai?style=for-the-badge&color=1d4ed8" alt="followers" />
-	<img src="https://img.shields.io/github/stars/phongdepptrai?affiliations=OWNER&style=for-the-badge&color=0284c7" alt="stars" />
-</p>
+SAT/MaxSAT Optimization | Full-Stack Development | AI and Computer Vision | Systems Programming
 
 </div>
 
@@ -21,15 +15,11 @@
 
 ## Core Stack
 
-<div align="center">
-
-![Python](https://img.shields.io/badge/Python-1E3A8A?style=for-the-badge&logo=python&logoColor=FFD43B)
-![Java](https://img.shields.io/badge/Java-0F172A?style=for-the-badge&logo=openjdk&logoColor=ED8B00)
-![C](https://img.shields.io/badge/C-1F2937?style=for-the-badge&logo=c&logoColor=60A5FA)
-![JavaScript](https://img.shields.io/badge/JavaScript-111827?style=for-the-badge&logo=javascript&logoColor=FACC15)
-![HTML5](https://img.shields.io/badge/HTML5-1C1917?style=for-the-badge&logo=html5&logoColor=F97316)
-
-</div>
+- Python
+- Java
+- C
+- JavaScript
+- HTML5
 
 ## Featured Projects
 
@@ -84,19 +74,13 @@ P3SAML3P strategies in `run_launcher.py`:
 
 ## GitHub Analytics
 
-<div align="center">
-
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=phongdepptrai&show_icons=true&hide_border=true&bg_color=0D1117&title_color=38BDF8&text_color=E2E8F0&icon_color=22D3EE" alt="stats" />
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=phongdepptrai&layout=compact&hide_border=true&bg_color=0D1117&title_color=38BDF8&text_color=E2E8F0" alt="langs" />
-<img height="170" src="https://streak-stats.demolab.com?user=phongdepptrai&hide_border=true&background=0D1117&ring=22D3EE&fire=38BDF8&currStreakLabel=E2E8F0" alt="streak" />
-
-</div>
+Visit my profile for live stats: [github.com/phongdepptrai](https://github.com/phongdepptrai)
 
 ## Connect
 
 <div align="center">
 
-[![GitHub](https://img.shields.io/badge/GitHub-phongdepptrai-0F172A?style=for-the-badge&logo=github)](https://github.com/phongdepptrai)
+[GitHub Profile](https://github.com/phongdepptrai)
 
 </div>
 
