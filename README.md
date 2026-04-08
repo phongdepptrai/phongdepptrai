@@ -77,7 +77,7 @@ Hi there! I'm a student at the **University of Engineering and Technology (UET)*
 <div align="center">
 
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=phongdepptrai&amp;show_icons=true&amp;theme=tokyonight&amp;hide_border=true" alt="GitHub Stats" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=phongdepptrai&amp;layout=compact&amp;theme=tokyonight&amp;hide_border=true" alt="Top Languages" />
+  <img height="180em" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=phongdepptrai&amp;theme=tokyonight" alt="Top Languages" />
 
   <br><br>
 
