@@ -76,12 +76,12 @@ Hi there! I'm a student at the **University of Engineering and Technology (UET)*
 
 <div align="center">
 
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=phongdepptrai&amp;show_icons=true&amp;theme=tokyonight&amp;hide_border=true&amp;bg_color=0D1117" alt="GitHub Stats" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=phongdepptrai&amp;layout=compact&amp;theme=tokyonight&amp;hide_border=true&amp;bg_color=0D1117" alt="Top Languages" />
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=phongdepptrai&amp;show_icons=true&amp;theme=tokyonight&amp;hide_border=true" alt="GitHub Stats" />
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=phongdepptrai&amp;layout=compact&amp;theme=tokyonight&amp;hide_border=true" alt="Top Languages" />
 
   <br><br>
 
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=phongdepptrai&amp;theme=tokyonight&amp;hide_border=true&amp;background=0D1117" alt="GitHub Streak" />
+  <img src="https://streak-stats.demolab.com?user=phongdepptrai&amp;theme=tokyonight&amp;hide_border=true" alt="GitHub Streak" />
 
 </div>
 
