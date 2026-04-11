@@ -60,7 +60,6 @@ Hi there! I'm a student at the **University of Engineering and Technology (UET)*
 #### 🛡️ Systems and Security
 | Project | Description | Tech Stack |
 | :--- | :--- | :--- |
-| **[Aero-OS](https://github.com/phongdepptrai/Aero-OS)** | Security-focused microkernel OS with biometric authentication | C |
 | **[ECHOVAULT](https://github.com/phongdepptrai/ECHOVAULT)** | Secure vault and protected storage system | Java |
 
 #### 🌐 Web and Games
